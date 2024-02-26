@@ -7,9 +7,9 @@ public class Animal {
     protected float weight;
     protected LocalDate birthDate;
     protected Owner owner;
-    public boolean isGoing;
-    protected boolean isSwimming;
-    protected boolean isFlying;
+    private boolean isGoing;
+    private boolean isSwimming;
+    private boolean isFlying;
 
     public Animal(String name, float weight, LocalDate age, Owner owner,
                   boolean isGoing, boolean isSwimming, boolean isFlying) {
