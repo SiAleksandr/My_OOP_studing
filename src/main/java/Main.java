@@ -1,23 +1,14 @@
 import clients.Animal;
-import clients.AnimalClasses.*;
+import clients.patients.*;
 import clients.Owner;
+import work.VeterinaryClinic;
+import work.staff.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
         Lion lion1 = new Lion("Лёва", 45, LocalDate.of
                 (2007, 2, 3), new Owner());
-        Lion lion2 = new Lion("Король", 40, LocalDate.of
-                (2005, 3, 10), new Owner());
-        System.out.println(lion1);
-        System.out.println(lion2);
-        System.out.println(lion1.getType());
-        lion1.lifeCycle();
-        System.out.println();
-
         Dog dog1 = new Dog("Лорд", 12,
                 LocalDate.of(2022, 2, 13), new Owner());
         Carp carp1 = new Carp("Свежий", 2,
@@ -29,19 +20,35 @@ public class Main {
         Parrot parrot1 = new Parrot("Пернатый", 0.25f,
                 LocalDate.of(2022, 4, 1), new Owner());
 
-        List<Animal> animals = new ArrayList<>();
-        animals.add(lion2);
-        animals.add(dog1);
-        animals.add(carp1);
-        animals.add(goldfish1);
-        animals.add(duck1);
-        animals.add(parrot1);
-        for(Animal item: animals){
-            System.out.println(item);
-            item.toGo();
-            item.swim();
-            item.fly();
-            System.out.println();
-        }
+        Doctor dr1 = new Doctor("Николай", "Николаев");
+        Doctor dr2 = new Doctor("Борис", "Борисов");
+        Doctor dr3 = new Doctor("Иван", "Ивановский");
+        Doctor dr4 = new Doctor("Поликарп", "Прокофьев");
+        Doctor dr5 = new Doctor("Степан", "Светлаков");
+
+        Nurse nr1 = new Nurse("Светлана", "Васильева");
+        Nurse nr2 = new Nurse("Елена", "Еланина");
+        Nurse nr3 = new Nurse("Оксана", "Аксакова");
+
+        VeterinaryClinic vc = new VeterinaryClinic();
+
+        vc.hireDoctor(dr1);
+        vc.hireDoctor(dr2);
+        vc.hireDoctor(dr3);
+        vc.hireDoctor(dr4);
+        vc.hireDoctor(dr5);
+
+        vc.hireNurse(nr1);
+        vc.hireNurse(nr2);
+        vc.hireNurse(nr3);
+
+        vc.takeAnimal(lion1);
+        vc.takeAnimal(dog1);
+        vc.takeAnimal(carp1);
+        vc.takeAnimal(goldfish1);
+        vc.takeAnimal(duck1);
+        vc.takeAnimal(parrot1);
+
+
     }
 }

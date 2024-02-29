@@ -7,32 +7,13 @@ public class Animal {
     protected float weight;
     protected LocalDate birthDate;
     protected Owner owner;
-    private boolean isGoing;
-    private boolean isSwimming;
-    private boolean isFlying;
-
-    public Animal(String name, float weight, LocalDate age, Owner owner,
-                  boolean isGoing, boolean isSwimming, boolean isFlying) {
+    protected Integer ownID;
+    public boolean onTreatment;
+    public Animal(String name, float weight, LocalDate age, Owner owner) {
         this.name = name;
         this.weight = weight;
         this.birthDate = age;
         this.owner = owner;
-        this.isGoing = isGoing;
-        this.isSwimming = isSwimming;
-        this.isFlying = isFlying;
-    }
-
-    public void toGo() {
-        if(isGoing == true)
-            System.out.println(getType() + name + " is walking");
-    }
-    public void swim() {
-        if(isSwimming == true)
-            System.out.println(getType() + name + " is swimming");
-    }
-    public void fly() {
-        if(isFlying == true)
-            System.out.println(getType() + name + " is flying");
     }
 
     public void lifeCycle() {
@@ -90,10 +71,13 @@ public class Animal {
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
+    public void setOwnID(Integer ownID) {
+        this.ownID = ownID;
+    }
+    public Integer getOwnID() { return ownID; }
 
     public String toString() {
-
-        return String.format("name = %s, weight = %s, date of birth = %s, owner = %s",
-                name, weight, birthDate, owner);
+        return String.format("имя = %s, вес = %s, дата рождения = %s, хозяин = %s, ID %d",
+                name, weight, birthDate, owner, ownID);
     }
 }
