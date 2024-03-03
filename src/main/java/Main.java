@@ -1,13 +1,29 @@
 import clients.Animal;
 import clients.patients.*;
 import clients.Owner;
+import pharmacy.Medicine;
+import pharmacy.MedicineComponent;
+import pharmacy.impl.Asitromin;
+import pharmacy.impl.Penicilinium;
+import pharmacy.impl.Vetbicid;
 import work.VeterinaryClinic;
 import work.staff.*;
 
 import java.time.LocalDate;
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
-        Lion lion1 = new Lion("Лёва", 45, LocalDate.of
+        Asitromin asitr1 = new Asitromin("Аситромин", 0.006f, 16);
+        Penicilinium penicilinium1 = new Penicilinium("Пенициллин", 0.012f, 19);
+        Vetbicid vetbicid1 = new Vetbicid("Ветбицид", 0.9f, 25);
+        Medicine medicine1 = new Medicine();
+        medicine1.addComponent(asitr1).addComponent(penicilinium1).addComponent(vetbicid1);
+        Iterator<MedicineComponent> med = medicine1;
+        while (medicine1.hasNext()) System.out.println(med.next());
+        System.out.println(medicine1);
+
+/*        Lion lion1 = new Lion("Лёва", 45, LocalDate.of
                 (2007, 2, 3), new Owner());
         Dog dog1 = new Dog("Лорд", 12,
                 LocalDate.of(2022, 2, 13), new Owner());
@@ -47,8 +63,6 @@ public class Main {
         vc.takeAnimal(carp1);
         vc.takeAnimal(goldfish1);
         vc.takeAnimal(duck1);
-        vc.takeAnimal(parrot1);
-
-
+        vc.takeAnimal(parrot1);*/
     }
 }
