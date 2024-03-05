@@ -1,9 +1,11 @@
 package pharmacy;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Medicine implements Iterator {
+public class Medicine implements Iterable<MedicineComponent>, Comparable<Medicine> {
+
     private List<MedicineComponent> components;
     private int index;
 
@@ -11,27 +13,58 @@ public class Medicine implements Iterator {
         this.components = new ArrayList<>();
         this.index = 0;
     }
-    public Medicine addComponent (MedicineComponent component) {
+
+    public Medicine addComponent(MedicineComponent component) {
         components.add(component);
         return this;
     }
 
     @Override
-    public boolean hasNext() {
-        if (index == components.size()) {
-            index = 0;
-            return false;
+    public int compareTo(Medicine o) {
+        float sumWeight = 0;
+        int sumPower = 0;
+        for (MedicineComponent item : this.components) {
+            sumWeight += item.getWeight();
+            sumPower += item.getPower();
         }
-        else return index < components.size();
+        float sumWeightO = 0;
+        int sumPowerO = 0;
+        for (MedicineComponent item : o.components) {
+            sumWeightO += item.getWeight();
+            sumPowerO += item.getPower();
+        }
+        int res;
+        if (sumPower > sumPowerO) res = 1;
+        else if (sumPower < sumPowerO) res = -1;
+        else if (sumWeight > sumWeightO) res = 1;
+        else if (sumWeight < sumWeightO) res = -1;
+        else if (this.components.size() > o.components.size()) res = 1;
+        else if (this.components.size() < o.components.size()) res = -1;
+        else res = 0;
+        return res;
     }
 
     @Override
-    public MedicineComponent next() {
+    public Iterator<MedicineComponent> iterator() {
+        return new Iterator<MedicineComponent>() {
+            @Override
+            public boolean hasNext() {
+                if (index == components.size()) {
+                    index = 0;
+                    return false;
+                } else return index < components.size();
+            }
 
-        return components.get(index++);
+            @Override
+            public MedicineComponent next() {
+                return components.get(index++);
+            }
+        };
     }
+
     @Override
     public String toString() {
         return "Лекарство, состав: \n" + components.toString();
     }
 }
+

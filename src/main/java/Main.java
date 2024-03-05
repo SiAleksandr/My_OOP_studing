@@ -1,27 +1,55 @@
-import clients.Animal;
-import clients.patients.*;
-import clients.Owner;
 import pharmacy.Medicine;
 import pharmacy.MedicineComponent;
 import pharmacy.impl.Asitromin;
+import pharmacy.impl.Moxidectin;
 import pharmacy.impl.Penicilinium;
 import pharmacy.impl.Vetbicid;
-import work.VeterinaryClinic;
-import work.staff.*;
 
-import java.time.LocalDate;
-import java.util.Iterator;
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Asitromin asitr1 = new Asitromin("Аситромин", 0.006f, 16);
-        Penicilinium penicilinium1 = new Penicilinium("Пенициллин", 0.012f, 19);
-        Vetbicid vetbicid1 = new Vetbicid("Ветбицид", 0.9f, 25);
+
+        Asitromin asitr1 = new Asitromin("Аситромин", 3, 4);
+        Penicilinium penicilinium1 = new Penicilinium("Пенициллин", 3, 8);
+        Vetbicid vetbicid1 = new Vetbicid("Ветбицид", 2, 7);
+        Moxidectin moxidectin = new Moxidectin("Моксидектин", 5, 3);
         Medicine medicine1 = new Medicine();
-        medicine1.addComponent(asitr1).addComponent(penicilinium1).addComponent(vetbicid1);
-        Iterator<MedicineComponent> med = medicine1;
-        while (medicine1.hasNext()) System.out.println(med.next());
-        System.out.println(medicine1);
+        medicine1.addComponent(asitr1).addComponent
+                (penicilinium1).addComponent(vetbicid1).addComponent(moxidectin);
+
+        Asitromin asitr2 = new Asitromin("Аситромин", 3, 4);
+        Penicilinium penicilinium2 = new Penicilinium("Пенициллин", 5, 8);
+        Vetbicid vetbicid2 = new Vetbicid("Ветбицид", 2, 7);
+        Medicine medicine2 = new Medicine();
+        medicine2.addComponent(asitr2).addComponent(penicilinium2).addComponent(vetbicid2);
+
+        Asitromin asitr3 = new Asitromin("Аситромин", 2, 4);
+        Penicilinium penicilinium3 = new Penicilinium("Пенициллин", 1, 8);
+        Vetbicid vetbicid3 = new Vetbicid("Ветбицид", 4, 7);
+        Medicine medicine3 = new Medicine();
+        medicine3.addComponent(asitr3).addComponent(penicilinium3).addComponent(vetbicid3);
+
+        List<Medicine> controlList = new ArrayList<>();
+        controlList.add(medicine1);
+        controlList.add(medicine2);
+        controlList.add(medicine3);
+        Collections.sort(controlList);
+
+        for(Medicine item: controlList) {
+            System.out.println(item);
+        }
+
+//        List<MedicineComponent> medList = new ArrayList<>();
+//        medList.add(asitr1);
+//        medList.add(penicilinium1);
+//        medList.add(vetbicid1);
+//        Collections.sort(medList, Comparator.reverseOrder());
+//        Collections.sort(medList, (comp1, comp2) -> (int)(comp1.getWeight() - comp2.getWeight()));
+//        for(MedicineComponent c: medList) System.out.println(c);
+
 
 /*        Lion lion1 = new Lion("Лёва", 45, LocalDate.of
                 (2007, 2, 3), new Owner());
