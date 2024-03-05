@@ -10,6 +10,18 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Main {
+    public static void sortMedicines(ArrayList<Medicine> med) {
+        Collections.sort(med);
+        int pos = 1;
+        for (Medicine item : med) {
+            System.out.printf("Лекарство %d компоненты\n", pos);
+            for (MedicineComponent c : item) {
+                System.out.println(c);
+            }
+            pos++;
+        }
+    }
+
     public static void main(String[] args) {
 
         Asitromin asitr1 = new Asitromin("Аситромин", 3, 4);
@@ -32,15 +44,12 @@ public class Main {
         Medicine medicine3 = new Medicine();
         medicine3.addComponent(asitr3).addComponent(penicilinium3).addComponent(vetbicid3);
 
-        List<Medicine> controlList = new ArrayList<>();
+        ArrayList<Medicine> controlList = new ArrayList<>();
         controlList.add(medicine1);
         controlList.add(medicine2);
         controlList.add(medicine3);
-        Collections.sort(controlList);
-
-        for(Medicine item: controlList) {
-            System.out.println(item);
-        }
+        sortMedicines(controlList);
+//
 
 //        List<MedicineComponent> medList = new ArrayList<>();
 //        medList.add(asitr1);

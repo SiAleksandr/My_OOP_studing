@@ -29,6 +29,6 @@ public abstract class MedicineComponent implements Comparable<MedicineComponent>
 
     @Override
     public String toString() {
-        return "Компонент лекарства { " + name + " вес " + weight + " эффективность " + power + " }";
+        return "{ " + name + " вес " + weight + " эффективность " + power + " }";
     }
 }
